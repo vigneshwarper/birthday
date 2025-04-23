@@ -1,0 +1,346 @@
+:root {
+    --primary-color: #ff6b8b;
+    --secondary-color: #ffb8c6;
+    --dark-pink: #ff3d6e;
+    --light-pink: #ffecef;
+    --text-color: #5a3a3a;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-pink);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.book-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 600px; /* Fixed height */
+}
+
+/* Book Cover Styles */
+.book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-pink));
+    border-radius: 10px 15px 15px 10px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    backface-visibility: hidden;
+    
+        
+       
+        
+        top: 0;
+        left: 0;
+        
+}
+
+
+.book-cover h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cover-content {
+    max-width: 80%;
+}
+
+.heart-pulse {
+    font-size: 3rem;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.open-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.open-btn:hover {
+    background-color: var(--light-pink);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Book Styles */
+.book {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: none;
+    transform-style: preserve-3d;
+    margin: 0 auto;
+    
+}
+
+.page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    background-color: white;
+    padding: 30px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    transform-origin: left;
+    transition: transform 1s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backface-visibility: hidden;
+    position: absolute;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 0.01s ease; 
+   
+}
+
+.left-page {
+    left: 0;
+    border-radius: 10px 0 0 10px;
+    background: linear-gradient(to right, var(--light-pink), white);
+   
+    transform-origin: right center;
+}
+
+.right-page {
+    right: 0;
+    border-radius: 0 10px 10px 0;
+    background: linear-gradient(to left, var(--light-pink), white);
+    transform-origin: left center;
+}
+
+/* Fix for reverse text during page turn */
+.page.flipping {
+    z-index: 5;
+}
+
+/* Polaroid Styles */
+.polaroids {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 30px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transform: rotate(-3deg);
+    width: 160px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.polaroid p {
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* List Styles */
+.love-list, .wishes-list, .bucket-list, .promise-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.love-list li, .wishes-list li, .bucket-list li, .promise-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.love-list li::before, .wishes-list li::before, 
+.bucket-list li::before, .promise-list li::before {
+    content: '❤';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Decorative Elements */
+.heart-decoration, .music-note, .final-heart {
+    text-align: center;
+    margin: 20px 0;
+    color: var(--primary-color);
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.final-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    color: var(--dark-pink);
+    text-align: right;
+}
+
+/* Page Controls */
+.page-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.control-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.control-btn:hover {
+    background-color: var(--dark-pink);
+    transform: translateY(-2px);
+}
+
+.control-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-cover, .book {
+        height: 500px;
+    }
+    
+    .book-cover h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page {
+        padding: 20px;
+    }
+    
+    .page-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .polaroid {
+        width: 120px;
+        padding: 10px 10px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .book-cover, .book {
+        height: 400px;
+    }
+    
+    .book-cover h1 {
+        font-size: 2rem;
+    }
+    
+    .page {
+        padding: 15px;
+    }
+    
+    .page-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .polaroids {
+        gap: 10px;
+    }
+    
+    .polaroid {
+        width: 100px;
+        padding: 8px 8px 15px;
+    }
+    
+    .polaroid p {
+        font-size: 0.8rem;
+    }
+    
+    .control-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
